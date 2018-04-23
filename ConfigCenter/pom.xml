@@ -8,24 +8,15 @@
         <version>1.3.7.RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.livedrof.springCloud.zuul</groupId>
-    <artifactId>ZuulExample</artifactId>
     <packaging>pom</packaging>
+    <groupId>com.livedrof.springCloud.config</groupId>
+    <artifactId>ConfigCenter</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>../ConfigCenter</module>
-    </modules>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zuul</artifactId>
-            <version>1.3.6.RELEASE</version>
+            <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
-       <!-- <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>4.3.12.RELEASE</version>
-        </dependency>-->
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -38,4 +29,12 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
