@@ -1,9 +1,9 @@
 package com.livedrof.springCloud.feign.service;
 
 import com.livedrof.springCloud.feign.dto.User;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
+
 //@Component
 public class UserServiceFallback implements UserService{
     @Override
@@ -27,7 +27,7 @@ public class UserServiceFallback implements UserService{
     }
 
     @Override
-    public com.livedrof.springCloud.feign.dto.User updateUser(com.livedrof.springCloud.feign.dto.User user) {
+    public User updateUser(User user) {
         return null;
     }
 }
