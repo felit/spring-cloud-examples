@@ -5,6 +5,7 @@ import com.livedrof.springCloud.feign.service.UserService;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 @RestController
 public class UserServiceImpl implements UserService {
@@ -15,7 +16,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getUsers() {
         System.out.println("getUsers");
-        return Collections.singletonList(new User());
+        User user = new User();
+        user.setId(1);
+        user.setUsername("user name");
+        user.setSalary(1002.2d);
+        user.setBirthday(new Date());
+        user.setLongVal(2l);
+        return Collections.singletonList(user);
     }
 
     public User createUser(User user) {
