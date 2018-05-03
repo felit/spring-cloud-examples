@@ -8,7 +8,6 @@ import java.util.Collections;
 import java.util.List;
 @RestController
 public class UserServiceImpl implements UserService {
-    @Override
     public User getUserById(int userId) {
         return null;
     }
@@ -19,17 +18,14 @@ public class UserServiceImpl implements UserService {
         return Collections.singletonList(new User());
     }
 
-    @Override
     public User createUser(User user) {
         return null;
     }
 
-    @Override
     public boolean deleteUser(int userId) {
         return false;
     }
 
-    @Override
     public User updateUser(User user) {
         return null;
     }

@@ -23,7 +23,7 @@ import java.util.List;
  * 泛型
  */
 //, fallback = UserServiceFallback.class
-@FeignClient(name = "custom-feign-api")
+@FeignClient(name = "custom-feign-service")
 public interface UserService {
     @RequestMapping(value = "/getUserById")
     User getUserById(int userId);

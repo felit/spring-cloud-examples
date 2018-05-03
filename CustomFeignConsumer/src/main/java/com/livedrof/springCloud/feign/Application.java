@@ -8,7 +8,6 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
 
 @EnableFeignClients
-//@EnableEurekaClient
 @EnableDiscoveryClient
 @SpringBootApplication
 public class Application {
