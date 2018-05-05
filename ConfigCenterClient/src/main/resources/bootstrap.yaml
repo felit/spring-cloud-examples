@@ -6,7 +6,7 @@ spring:
     config:
       uri: http://127.0.0.1:10020
       # 要读取配置文件读取的值
-      name: cloud-config
+      name: application
       # 如果不设置此值，则系统设置此值为 spring.profiles.active
       profile: dev
       # 可以使用之前的版本。默认值可以是git label, branch name or commit id。可以使用多个Label，多个Label可以使用逗号分隔

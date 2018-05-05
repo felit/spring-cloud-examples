@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 class HelloController {
-
+    @Value("${redis.host}")
     private String hello;
 
     @RequestMapping("/hello")
