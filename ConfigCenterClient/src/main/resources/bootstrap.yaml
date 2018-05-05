@@ -1,8 +1,10 @@
 spring:
+  application:
+    name: Config-Center-Client
   cloud:
     # 配置服务器的地址
     config:
-      uri: http://127.0.0.1:8080
+      uri: http://127.0.0.1:10020
       # 要读取配置文件读取的值
       name: cloud-config
       # 如果不设置此值，则系统设置此值为 spring.profiles.active
