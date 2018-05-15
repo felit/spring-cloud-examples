@@ -1,0 +1,1 @@
+FeignClient与maven有关吗？可以一个pom.xml对应多个FeignClient吗？

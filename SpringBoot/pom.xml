@@ -9,10 +9,11 @@
         <relativePath></relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <packaging>jar</packaging>
     <groupId>com.felit</groupId>
     <artifactId>SpringBootExamples</artifactId>
     <version>1.0-SNAPSHOT</version>
+   
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -53,5 +54,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
