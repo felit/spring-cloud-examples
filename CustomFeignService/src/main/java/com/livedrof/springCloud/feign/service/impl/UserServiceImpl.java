@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
         user.setUsername("user name");
         user.setSalary(1002.2d);
         user.setBirthday(new Date());
-        user.setLongVal(2l);
+        user.setLongVal(300l);
         return Collections.singletonList(user);
     }
 

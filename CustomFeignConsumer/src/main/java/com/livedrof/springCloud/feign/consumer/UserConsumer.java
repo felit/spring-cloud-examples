@@ -1,5 +1,6 @@
 package com.livedrof.springCloud.feign.consumer;
 
+import com.livedrof.springCloud.feign.api.CustomUserServiceApi;
 import com.livedrof.springCloud.feign.dto.User;
 import com.livedrof.springCloud.feign.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class UserConsumer {
     DiscoveryClient client;
 
     @Autowired
-    private UserService userService;
+    private CustomUserServiceApi userService;
 
     public User getUserById(int userId) {
         return null;
