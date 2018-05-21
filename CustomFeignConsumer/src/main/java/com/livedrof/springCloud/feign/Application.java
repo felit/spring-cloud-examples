@@ -9,7 +9,7 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
 @EnableFeignClients
 @EnableDiscoveryClient
-@SpringBootApplication(excludeName = {"com.livedrof.springCloud.feign.api.CustomUserServiceApi"})
+@SpringBootApplication(excludeName = {"com.livedrof.springCloud.feign.api.CustomUserServiceApi", "com.livedrof.springCloud.feign.constom.OldUserServiceApi"})
 public class Application {
 
     public static void main(String[] args) {

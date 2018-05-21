@@ -1,6 +1,7 @@
 package com.livedrof.springCloud.feign.consumer;
 
 import com.livedrof.springCloud.feign.api.CustomUserServiceApi;
+import com.livedrof.springCloud.feign.constom.OldUserServiceApi;
 import com.livedrof.springCloud.feign.dto.User;
 import com.livedrof.springCloud.feign.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class UserConsumer {
     @Autowired
     private CustomUserServiceApi userService;
 
+    @Autowired
+    private OldUserServiceApi oldUserServiceApi;
+
     public User getUserById(int userId) {
         return null;
     }
@@ -27,6 +31,9 @@ public class UserConsumer {
     public List<User> getUsers() {
         System.out.println("getUsers from " + UserConsumer.class);
         System.out.println(this.client.getServices());
+        this.oldUserServiceApi.getUsers();
+        System.out.println(this.oldUserServiceApi.getUsers());
+        System.out.println(this.userService.getUsers());
         return this.userService.getUsers();
     }
 
