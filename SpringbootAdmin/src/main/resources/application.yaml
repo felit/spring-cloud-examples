@@ -1,0 +1,4 @@
+server.port: 8088
+security.user.name: aa
+security.user.password: aa
+security.basic.enabled: false
