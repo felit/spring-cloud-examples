@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:property-placeholder location="classpath:application.properties" ignore-unresolvable="true"></context:property-placeholder>
+    <!-- 配置数据源 -->
+    <bean id="sj_ds_0" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <property name="url" value="${sj_shardingjdbc_0.url}"/>
+        <property name="username" value="${sj_shardingjdbc_0.username}"/>
+        <property name="password" value="${sj_shardingjdbc_0.password}"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="maxActive" value="100"/>
+        <property name="initialSize" value="10"/>
+        <property name="maxWait" value="60000"/>
+        <property name="minIdle" value="5"/>
+        <!--druid配置优化可以放在这里-->
+    </bean>
+
+    <!-- 配置数据源 -->
+    <bean id="sj_ds_1" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <property name="url" value="${sj_shardingjdbc_1.url}"/>
+        <property name="username" value="${sj_shardingjdbc_1.username}"/>
+        <property name="password" value="${sj_shardingjdbc_1.password}"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="maxActive" value="100"/>
+        <property name="initialSize" value="10"/>
+        <property name="maxWait" value="60000"/>
+        <property name="minIdle" value="5"/>
+        <!--druid配置优化可以放在这里-->
+    </bean>
+
+    <!-- 配置数据源 -->
+    <bean id="sj_ds_2" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <property name="url" value="${sj_shardingjdbc_2.url}"/>
+        <property name="username" value="${sj_shardingjdbc_2.username}"/>
+        <property name="password" value="${sj_shardingjdbc_2.password}"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="maxActive" value="100"/>
+        <property name="initialSize" value="10"/>
+        <property name="maxWait" value="60000"/>
+        <property name="minIdle" value="5"/>
+        <!--druid配置优化可以放在这里-->
+    </bean>
+
+    <!-- 配置数据源 -->
+    <bean id="sj_ds_3" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <property name="url" value="${sj_shardingjdbc_3.url}"/>
+        <property name="username" value="${sj_shardingjdbc_3.username}"/>
+        <property name="password" value="${sj_shardingjdbc_3.password}"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="maxActive" value="100"/>
+        <property name="initialSize" value="10"/>
+        <property name="maxWait" value="60000"/>
+        <property name="minIdle" value="5"/>
+        <!--druid配置优化可以放在这里-->
+    </bean>
+
+    <!-- 配置数据源 -->
+    <bean id="sj_ds_default" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <property name="url" value="${sj_default.url}"/>
+        <property name="username" value="${sj_default.username}"/>
+        <property name="password" value="${sj_default.password}"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="maxActive" value="100"/>
+        <property name="initialSize" value="10"/>
+        <property name="maxWait" value="60000"/>
+        <property name="minIdle" value="5"/>
+        <!--druid配置优化可以放在这里-->
+    </bean>
+</beans>

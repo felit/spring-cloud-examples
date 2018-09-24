@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.livedrof.shardingjdbc.dao.IUserDao">
+    <resultMap id="UserMapper" type="com.livedrof.shardingjdbc.domain.User">
+        <result property="id" javaType="String" column="id"/>
+        <result property="username" javaType="String" column="username"/>
+    </resultMap>
+
+    <select id="insertUser" resultMap="UserMapper">
+        insert into users(id,username) values(#{id},#{username})
+    </select>
+</mapper>

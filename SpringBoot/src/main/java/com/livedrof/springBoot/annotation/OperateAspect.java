@@ -21,6 +21,6 @@ public class OperateAspect {
         MethodSignature sign =  (MethodSignature)joinPoint.getSignature();
         Method method = sign.getMethod();
         OperateLog annotation = method.getAnnotation(OperateLog.class);
-        System.out.print("打印："+annotation.value()+" 前置日志");
+//        System.out.print("打印："+annotation.value()+" 前置日志");
     }
 }

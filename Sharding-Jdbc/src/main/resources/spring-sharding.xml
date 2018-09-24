@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sharding="http://shardingjdbc.io/schema/shardingjdbc/sharding"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://shardingjdbc.io/schema/shardingjdbc/sharding
+                        http://shardingjdbc.io/schema/shardingjdbc/sharding/sharding.xsd">
+
+    <!--数据库sharding策略-->
+    <sharding:standard-strategy id="databaseStrategy" sharding-column="id"
+                                precise-algorithm-class="com.livedrof.shardingjdbc.algorithm.UserDatabaseShardingAlgorithm" />
+    <!--auth_user表sharding策略:无 -->
+    <sharding:none-strategy id="noneStrategy" />
+
+    <!--<property name="ignoreUnresolvablePlaceholders" value="true"/>-->
+    <sharding:data-source id="shardingDataSource">
+
+        <!--default-data-source指定默认数据源, 即没有在<rdb:table-rules>申明的logic-table表,
+        即不需要分库分表的表, 全部走默认数据源-->
+        <sharding:sharding-rule data-source-names="sj_ds_0,sj_ds_1,sj_ds_2,sj_ds_3,sj_ds_default"
+                                default-data-source-name="sj_ds_default"
+                                default-database-strategy-ref="databaseStrategy"
+                                default-table-strategy-ref="noneStrategy">
+            <sharding:table-rules>
+                <!--auth_user只分库不分表, actual-tables的值一定要加上:sj_ds_${0..3}., 否则会遍历data-sources, 而sj_ds_default中并没有auth_user表 -->
+                <sharding:table-rule logic-table="users" actual-data-nodes="sj_ds_${0..3}.users" database-strategy-ref="databaseStrategy"/>
+            </sharding:table-rules>
+        </sharding:sharding-rule>
+        <sharding:props>
+            <prop key="sql.show">true</prop>
+            <prop key="executor.size">2</prop>
+        </sharding:props>
+    </sharding:data-source>
+
+    <!-- 配置sqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!---datasource交给sharding-jdbc托管-->
+        <property name="dataSource" ref="shardingDataSource"/>
+        <property name="mapperLocations" value="classpath*:mybatis/*Mapper.xml"/>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.livedrof.shardingjdbc.dao"></property>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+</beans>

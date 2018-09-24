@@ -13,7 +13,7 @@ public class HelloController {
     @RequestMapping("/hello")
     @OperateLog("测试")
     public String index() {
-        log.info("hello spring boot");
+//        log.info("hello spring boot");
         return "Hello world";
     }
 
