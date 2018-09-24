@@ -11,14 +11,16 @@ public class UserDatabaseShardingAlgorithm implements PreciseShardingAlgorithm<L
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private static final int TABLE_SHARDING_NUMBER = 16;
-    private static final int DATABASE_SHARDING_NUMBER = 4;
+    private static final long TABLE_SHARDING_NUMBER = 16L;
+    private static final long DATABASE_SHARDING_NUMBER = 4L;
 
     public String doSharding(final Collection<String> availableTargetNames,
                              final PreciseShardingValue<Long> shardingValue) {
         for (String each : availableTargetNames) {
-            if (each.endsWith(shardingValue.getValue() %  DATABASE_SHARDING_NUMBER + "")) {
+            Long val =  (Long.valueOf(shardingValue.getValue()+"") % TABLE_SHARDING_NUMBER) / DATABASE_SHARDING_NUMBER;
+            if (each.endsWith(val + "")) {
                 logger.debug("the target database name: {}", each);
+                System.out.println(each);
                 return each;
             }
         }

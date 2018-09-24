@@ -10,6 +10,8 @@
     <!--数据库sharding策略-->
     <sharding:standard-strategy id="databaseStrategy" sharding-column="id"
                                 precise-algorithm-class="com.livedrof.shardingjdbc.algorithm.UserDatabaseShardingAlgorithm" />
+    <sharding:standard-strategy id="tableStrategy" sharding-column="id"
+                                precise-algorithm-class="com.livedrof.shardingjdbc.algorithm.UserTableShardingAlgorithm" />
     <!--auth_user表sharding策略:无 -->
     <sharding:none-strategy id="noneStrategy" />
 
@@ -21,10 +23,10 @@
         <sharding:sharding-rule data-source-names="sj_ds_0,sj_ds_1,sj_ds_2,sj_ds_3,sj_ds_default"
                                 default-data-source-name="sj_ds_default"
                                 default-database-strategy-ref="databaseStrategy"
-                                default-table-strategy-ref="noneStrategy">
+                                default-table-strategy-ref="tableStrategy">
             <sharding:table-rules>
                 <!--auth_user只分库不分表, actual-tables的值一定要加上:sj_ds_${0..3}., 否则会遍历data-sources, 而sj_ds_default中并没有auth_user表 -->
-                <sharding:table-rule logic-table="users" actual-data-nodes="sj_ds_${0..3}.users" database-strategy-ref="databaseStrategy"/>
+                <sharding:table-rule logic-table="users" actual-data-nodes="sj_ds_${0..3}.users_${0..3}" table-strategy-ref="tableStrategy" database-strategy-ref="databaseStrategy"/>
             </sharding:table-rules>
         </sharding:sharding-rule>
         <sharding:props>

@@ -2,11 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.livedrof.shardingjdbc.dao.IUserDao">
     <resultMap id="UserMapper" type="com.livedrof.shardingjdbc.domain.User">
-        <result property="id" javaType="String" column="id"/>
+        <result property="id" javaType="Long" column="id"/>
         <result property="username" javaType="String" column="username"/>
     </resultMap>
 
-    <insert id="insertUser" >
+    <insert id="insertUser">
         insert into users(id,username) values(#{id},#{username})
+    </insert>
+
+    <select id="getUsers" parameterType="list" resultMap="UserMapper">
+        select id,username
+        from users
+        where id in
+        <foreach collection="list" item="id" separator="," open="(" close=")">
+            ${id}
+        </foreach>
+    </select>
+    <insert id="batchInsertUsers" parameterType="java.util.List">
+        insert into users(id,username)
+        values
+        <foreach collection="list" item="user" separator=",">
+            (#{user.id},#{user.username})
+        </foreach>
     </insert>
 </mapper>
