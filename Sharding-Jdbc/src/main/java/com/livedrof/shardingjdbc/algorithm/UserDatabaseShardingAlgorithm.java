@@ -19,7 +19,6 @@ public class UserDatabaseShardingAlgorithm implements PreciseShardingAlgorithm<L
         for (String each : availableTargetNames) {
             if (each.endsWith(shardingValue.getValue() %  DATABASE_SHARDING_NUMBER + "")) {
                 logger.debug("the target database name: {}", each);
-                System.out.println(each);
                 return each;
             }
         }

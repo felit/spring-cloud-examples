@@ -6,7 +6,7 @@
         <result property="username" javaType="String" column="username"/>
     </resultMap>
 
-    <select id="insertUser" resultMap="UserMapper">
+    <insert id="insertUser" >
         insert into users(id,username) values(#{id},#{username})
-    </select>
+    </insert>
 </mapper>
