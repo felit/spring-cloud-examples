@@ -1,8 +1,10 @@
 package com.livedrof.springcloud.rxjava;
 
+import org.junit.Test;
 import rx.Observer;
 
 public class DemoTest {
+    @Test
     public void test() {
 
         Observer<String> observer = new Observer<String>() {
