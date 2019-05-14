@@ -1,5 +1,6 @@
 package com.livedrof.springboot2.controller;
 
+import com.livedrof.springboot2.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,10 @@ import java.util.concurrent.Future;
 @RestController
 @RequestMapping("/async")
 public class AsyncController {
+
+    @Autowired
+    private IUserService userService;
+
     @Autowired
     private AsyncExceptionDemo asyncExceptionDemo;
 
@@ -25,14 +30,7 @@ public class AsyncController {
     public Object future() {
         System.out.println("async/create call,thread:" + Thread.currentThread().getName());
         Future future = this.asyncExceptionDemo.hardDemo("hello");
-        try {
-            System.out.println("future.get():" + future.get());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-//        this.asyncExceptionDemo.inputDemo("hello async");
+        this.userService.ss();
         return "asyc success";
     }
 

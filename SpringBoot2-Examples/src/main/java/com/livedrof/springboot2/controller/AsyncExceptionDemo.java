@@ -1,6 +1,8 @@
 package com.livedrof.springboot2.controller;
 
+import com.livedrof.springboot2.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
@@ -10,7 +12,8 @@ import java.util.concurrent.Future;
 @Slf4j
 @Component
 public class AsyncExceptionDemo {
-
+    @Autowired
+    private IUserService userService;
     @Async("asyncExecutor")
     public void simple() {
         try {
@@ -33,8 +36,11 @@ public class AsyncExceptionDemo {
         log.info("this is a hard method,{}", s);
         Future future;
         try {
-            Thread.sleep(3000);
+            Thread.sleep(300);
+            userService.ss();
+
             throw new IllegalArgumentException();
+
         } catch (InterruptedException e) {
             future = new AsyncResult("InterruptedException error");
         } catch (IllegalArgumentException e) {
