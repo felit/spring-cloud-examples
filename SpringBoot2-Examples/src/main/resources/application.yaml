@@ -1,0 +1,6 @@
+erp:
+  host: http://a.erp.qa.daling.com
+
+feign:
+  hystrix:
+    enabled: true
